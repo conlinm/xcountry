@@ -27,5 +27,10 @@
 		"typescript": "^4.7.4",
 		"vite": "^3.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"milligram": "^1.4.1",
+		"mysql": "^2.18.1",
+		"mysql2": "^2.3.3"
+	}
 }
