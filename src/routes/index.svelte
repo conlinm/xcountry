@@ -8,7 +8,7 @@
         <input type="password" placeholder="password" id="passwordField">
     <div>
       <input class="button-primary" type="submit" formaction="/home"value="Login">
-      <input class="button-outline" type="submit" formaction="/home"value="Create Account">
+      <input class="button-outline" type="submit" formaction="/signup"value="Create Account">
     </div>
     </fieldset>
   </form>

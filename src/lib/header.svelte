@@ -31,7 +31,8 @@ header {
   width: 100%;
   z-index: 999;
   padding: .4rem;
-  position: fixed;
+  position: sticky;
+  top: 0;
   background: #f4f5f6;
   border-bottom: 0.1rem solid #d1d1d1;
 }
