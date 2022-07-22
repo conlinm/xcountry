@@ -6,10 +6,14 @@
 	<nav class= 'header'>
 		<ul>
             <li><a href='/athletes'>Athletes</a></li>
+            <li><a href='/topathletes'>Top Athletes</a></li>
+            <li><a href='/create'>Users</a></li>
+            <li><a href='/pr'>PR Times</a></li>
+            <li><a href='/myathletes'>My Athletes</a></li>
             <li><a href='/meets'>Meets</a></li>
 			<li><a href = '/schools'>Schools</a></li>
+      <li><a href = '/topschools'>School Top Athlete Count</a></li>
 			<li><a href='/home'>Home </a></li>
-			<li><a href = '/about'>About </a></li>
         </ul>
 	</nav>
 	<label for='menu-toggle' class='menu-nav-toggle'>
@@ -60,9 +64,9 @@ nav {
 
 nav ul {
   margin: 0;
-  margin-top: 14%;
+  margin-top: 5%;
   padding: 0;
-  height: 90vh;
+  height: 70vh;
 }
 
 nav li {
@@ -131,7 +135,7 @@ nav a {
   bottom: 0.8rem;
 }
 
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 500rem) {
   .menu-nav-toggle {
     display: none;
   }

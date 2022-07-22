@@ -1,35 +1,23 @@
 <script>
-export let my_athletes;
+export let top_schools;
+top_schools = top_schools[0];
 </script>
 
-<div class="athletes">
-  <div>
-    <h3>My Athletes</h3>
-    <p>
-      This page displays the athletes that I am following.
-    </p>
-  </div>
+<div class="topschools">
     <div class="table">
       <table>
         <thead>
           <tr>
-            <th>Last Name</th>
-            <th>Grade</th>
-            <th>School</th>
-            <th>GPA</th>
-            <th>Recruit recruit_status</th>
+            <th>School Name</th>
+            <th>Top Girl Athlete Count</th>
           </tr>
         </thead>
        
         <tbody>
-          {#each my_athletes as athlete}
+          {#each top_schools as top}
           <tr>
-            <td>{athlete.last_name}</td>
-            <td>{athlete.grade_level}</td>
-            <td>{athlete.school_name}</td>
-            <td>{athlete.gpa}</td>
-            <td>{athlete.recruit_status}</td>
-            
+            <td>{top.school_name}</td>
+            <td>{top.ath_count}</td>
           </tr>
           {/each}
 
@@ -43,7 +31,7 @@ export let my_athletes;
 
 
 <style>
-        .athletes {
+        .topschools {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -52,7 +40,7 @@ export let my_athletes;
         height: 100vh;
     }  
         .table {
-          width: 700px;
+          width: 400px;
           table-layout: auto;
           border-collapse: collapse;
         }

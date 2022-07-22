@@ -28,7 +28,7 @@
         height: 100vh;
     }  
         .table {
-          width: 600px;
+          width: 700px;
           table-layout: auto;
           border-collapse: collapse;
         }
