@@ -60,7 +60,7 @@
                 <td>{user.first_name} {user.last_name}</td>
                 <td>{user.email}</td>
                 <td>{user.password}</td>
-                <td><button on:click={openEdit(user)} class="button-primary-edit">Edit</button></td>
+                <td><button on:click={()=>openEdit(user)} class="button-primary-edit">Edit</button></td>
             </tr>
             {/each}
           </tbody>

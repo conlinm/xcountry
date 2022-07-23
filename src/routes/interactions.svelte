@@ -1,88 +1,95 @@
 <script >
-    export let users;
-    export let userIdField;
+    export let interactions;
+
     export let firstNameField;
     export let lastNameField;
-    export let emailField;
-    export let passwordField;
+    export let dateField;
+    export let noteField;
+
+    import Modal from './Modal.svelte'
+    import Test from './Test.svelte'
+
+    // initialise modal state and content
+	 let showModal = false;
+	 let modalContent;
+	
+	// pass in component as parameter and toggle modal state
+	function toggleModal(component) {
+		modalContent = component;
+		showModal = !showModal;
+	}
 
 
-    function openEdit(user){
-        userIdField = user.user_id;
-        firstNameField = user.first_name;
-        lastNameField = user.last_name;
-        emailField = user.email;
-        passwordField = user.password;
+    function openEdit(interaction){
+        firstNameField = interaction.first_name;
+        lastNameField = interaction.last_name;
+        dateField = interaction.interaction_date;
+        noteField = interaction.notes;
     }
     function modifyAccount(){
-        let user = {
-            user_id: userIdField,
+        let interaction = {
             first_name: firstNameField,
             last_name: lastNameField,
-            email: emailField,
-            password: passwordField
+            date: dateField,
+            note: noteField
         };
     }
+
 </script>
 
- 
   
-<div class="users">
+<div class="interactions">
     <div class="heading">
         <div class="intro">
-         <h3 class="center">Users</h3>
+         <h3 class="center">Interactions</h3>
          <p>
-            This page functions as an admin page for the modification and deletion of users.
-            Post, put, and delete functions are provided which send the queries to our backend database on GCP.
+            This page displays the interactions a user has with the athletes they are following. Interactions can be created, edited, or deleted.
          </p>
         </div>
         <div class="right">
-            <form  action="./signup">
-                <button type="submit" class="button-create">Add New User</button>
-            </form>
+            <button on:click={() => (toggleModal(Test))} class="button-create">New Interaction</button>
+            {#if showModal}
+	        <Modal on:click={toggleModal} {modalContent} />
+            {/if}
         </div>
     </div>  
       <div class="table">
       <table>
           <thead>
             <tr>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date</th>
+                <th>Note</th>
             </tr>
           </thead>
          
           <tbody>
-            {#each users as user}
+            {#each interactions as interaction}
             <tr>
-                <td>{user.user_id}</td>
-                <td>{user.first_name} {user.last_name}</td>
-                <td>{user.email}</td>
-                <td>{user.password}</td>
-                <td><button on:click={openEdit(user)} class="button-primary-edit">Edit</button></td>
+                <td>{interaction.first_name}</td>
+                <td>{interaction.last_name}</td>
+                <td>{interaction.interaction_date}</td>
+                <td>{interaction.notes}</td>
+                <td><button on:click={()=>openEdit(interaction)} class="button-primary-edit">Edit</button></td>
             </tr>
             {/each}
           </tbody>
         </table>
     </div>
     <div class="edit">
-        {#if userIdField}
+        {#if lastNameField}
         <h3>Modify Account</h3>
         <form action="/create?_method=put" method="post">
             <fieldset>
-
-                <input bind:value={userIdField} type="hidden" name="user_id" placeholder="User ID" id="userIdField">
-                <h4>User ID = {userIdField}</h4>
                 <label for="first_name">First Name</label>
                 <input bind:value={firstNameField} type="text" name="first_name" placeholder="First Name" id="firstNameField">
                 <label for="last_name">Last Name</label>
                 <input  bind:value={lastNameField} type="text" name="last_name" placeholder="Last Name" id="lastNameField">
-                <label for="email">Email</label>
-                <input  bind:value={emailField} type="email" name="email" placeholder="Email" id="emailField">
-                <label for="password">Password</label>
-                <input  bind:value={passwordField} type="password" name="password" placeholder="Password" id="passwordField">
-        
+                <label for="date">Date</label>
+                <input  bind:value={dateField} type="date" name="date" placeholder="Date" id="dateField">
+                <label for="note">Note</label>
+                <input  bind:value={noteField} type="text" name="note" placeholder="Notes" id="noteField">
               <button class="button-primary" type="submit" >Modify Account</button>
               <button formaction="/create?_method=delete" class="button-primary-delete" type="submit">Delete Account</button>
             </fieldset>
@@ -94,7 +101,7 @@
 
 
   <style>
-    .users {
+    .interactions {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -120,7 +127,7 @@
 
         background-color: #FF7F00;
         border: 0.1rem solid #FF7F00;
-    }
+    } 
     .button-primary {
         width: 100%;
         background-color: #FF7F00;

@@ -10,6 +10,7 @@
             <li><a href='/create'>Users</a></li>
             <li><a href='/pr'>PR Times</a></li>
             <li><a href='/myathletes'>My Athletes</a></li>
+            <li><a href='/interactions'>Interactions</a></li>
             <li><a href='/meets'>Meets</a></li>
 			<li><a href = '/schools'>Schools</a></li>
       <li><a href = '/topschools'>School Top Athlete Count</a></li>

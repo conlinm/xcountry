@@ -3,18 +3,6 @@
 
     export let meets;
 
-    function getFormattedDate(date) {
-        var year =  date.getFullYear();
-
-        var month =  (1 + date.getMonth()).toString();
-        month = month.length > 1 ? month : '0' + month;
-
-        var day =  date.getDate().toString();
-        day = day.length > 1 ? day : '0' + day;
-        
-        return month + '/' + day + '/' + year;
-    }
-  
   </script>
   
   <div class="meets">
@@ -34,7 +22,7 @@
             <tr>
               <td>{meet.meet_name}</td>
               <td>{meet.meet_location}</td>
-              <td>{getFormattedDate(meet.meet_date)}</td>
+              <td>{meet.meet_date}</td>
              
             </tr>
             {/each}
@@ -53,11 +41,6 @@
         justify-content: center;
         align-content: top; 
         height: 100vh;
-    }
-    .button-primary {
-        width: 100%;
-        background-color: #FF7F00;
-        border: 0.1rem solid #FF7F00;
     }
   
         .table {
@@ -78,7 +61,6 @@
         .table th,
         .table td {
           padding: 5px;
-          /* text-align: left; */
           width: 200px;
         }
   </style>
