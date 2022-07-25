@@ -23,7 +23,7 @@
 	
 	.content {
 		background-color: white;
-		width: 20em;
-		height: 20em;
+		width: 40em;
+		height: 40em;
 	}
 </style>

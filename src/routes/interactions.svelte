@@ -1,30 +1,42 @@
 <script >
+
+
     export let interactions;
 
     export let firstNameField;
     export let lastNameField;
     export let dateField;
     export let noteField;
+    export let interactionIDField;
+    export let athleteIDField
 
-    import Modal from './Modal.svelte'
-    import Test from './Test.svelte'
+    // import Modal from './Modal.svelte'
+    // import Test from './Test.svelte'
 
-    // initialise modal state and content
-	 let showModal = false;
-	 let modalContent;
-	
-	// pass in component as parameter and toggle modal state
-	function toggleModal(component) {
-		modalContent = component;
-		showModal = !showModal;
-	}
+    // // initialise modal state and content
+	//  let showModal = false;
+	//  let modalContent;
 
+
+	// // pass in component as parameter and toggle modal state
+	// function toggleModal(component) {
+	// 	modalContent = component;
+	// 	showModal = !showModal;
+	// }
+    function createNew(interaction){
+        firstNameField = interaction.first_name;
+        lastNameField = interaction.last_name;
+        athleteIDField = interaction.athlete_id;
+        window.location.replace('./create_interaction?athlete_id=' + interaction.athlete_id + '&first_name=' + interaction.first_name + '&last_name=' + interaction.last_name);
+    }
 
     function openEdit(interaction){
         firstNameField = interaction.first_name;
         lastNameField = interaction.last_name;
         dateField = interaction.interaction_date;
         noteField = interaction.notes;
+        interactionIDField = interaction.interactions_id;
+        athleteIDField = interaction.athlete_id;
     }
     function modifyAccount(){
         let interaction = {
@@ -46,19 +58,18 @@
             This page displays the interactions a user has with the athletes they are following. Interactions can be created, edited, or deleted.
          </p>
         </div>
-        <div class="right">
+        <!-- <div class="right">
             <button on:click={() => (toggleModal(Test))} class="button-create">New Interaction</button>
             {#if showModal}
 	        <Modal on:click={toggleModal} {modalContent} />
             {/if}
-        </div>
+        </div> -->
     </div>  
       <div class="table">
       <table>
           <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th>Date</th>
                 <th>Note</th>
             </tr>
@@ -67,11 +78,12 @@
           <tbody>
             {#each interactions as interaction}
             <tr>
-                <td>{interaction.first_name}</td>
-                <td>{interaction.last_name}</td>
+                <td>{interaction.first_name} {interaction.last_name}</td>
+                <td></td>
                 <td>{interaction.interaction_date}</td>
                 <td>{interaction.notes}</td>
                 <td><button on:click={()=>openEdit(interaction)} class="button-primary-edit">Edit</button></td>
+                <td><button on:click={()=>createNew(interaction)} class="button-primary-edit">New</button></td>
             </tr>
             {/each}
           </tbody>
@@ -79,19 +91,18 @@
     </div>
     <div class="edit">
         {#if lastNameField}
-        <h3>Modify Account</h3>
-        <form action="/create?_method=put" method="post">
+        <h3>Edit Interaction</h3>
+        <form action="/interactions?_method=put" method="post">
             <fieldset>
-                <label for="first_name">First Name</label>
-                <input bind:value={firstNameField} type="text" name="first_name" placeholder="First Name" id="firstNameField">
-                <label for="last_name">Last Name</label>
-                <input  bind:value={lastNameField} type="text" name="last_name" placeholder="Last Name" id="lastNameField">
+                <input bind:value={interactionIDField} type="hidden" name="interaction_id" id="interactionIdField">
+                <input bind:value={athleteIDField} type="hidden" name="athlete_id" id="athleteIdField">
+                <h4>Name: {firstNameField} {lastNameField}</h4>
                 <label for="date">Date</label>
-                <input  bind:value={dateField} type="date" name="date" placeholder="Date" id="dateField">
+                <input  bind:value={dateField} type="text" name="date" placeholder="Date" id="dateField">
                 <label for="note">Note</label>
-                <input  bind:value={noteField} type="text" name="note" placeholder="Notes" id="noteField">
-              <button class="button-primary" type="submit" >Modify Account</button>
-              <button formaction="/create?_method=delete" class="button-primary-delete" type="submit">Delete Account</button>
+                <textarea bind:value={noteField} name="note" id="" cols="30" rows="60"></textarea>
+              <button class="button-primary" type="submit" >Save Edited Interaction</button>
+              <button formaction="/interactions?_method=delete" class="button-primary-delete" type="submit">Delete Interaction</button>
             </fieldset>
           </form>
         {/if}
@@ -120,14 +131,14 @@
         padding: 2rem;
         width: 80%;
     }
-    .right{
+    /* .right{
         padding: 2rem 4rem 2rem 4rem;
     }
     .button-create {
 
         background-color: #FF7F00;
-        border: 0.1rem solid #FF7F00;
-    } 
+        border: 0.1rem solid #FF7F00; 
+     }  */
     .button-primary {
         width: 100%;
         background-color: #FF7F00;
@@ -158,7 +169,7 @@
         border: 0.1rem solid #c16100;
     }
     .table {
-        width: 600px;
+        width: 700px;
         table-layout: auto;
         border-collapse: collapse;
     }

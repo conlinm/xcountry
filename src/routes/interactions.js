@@ -7,9 +7,9 @@ export async function get({ params }) {
 
 	const interactions = await con
 		.query(
-			`SELECT a.first_name,last_name, Date_Format(i.interaction_date,"%m/%d/%Y") as interaction_date, i.notes
+			`SELECT a.first_name,last_name, Date_Format(i.interaction_date,"%Y-%m-%d") as interaction_date, i.notes, i.interactions_id, i.athlete_id
 	FROM interactions as i JOIN high_school_athlete as a
-		ON a.athlete_id = i.athlete_id;`
+		ON a.athlete_id = i.athlete_id ORDER BY interaction_date DESC;`
 		)
 		.then(function ([rows, fields]) {
 			return rows;
@@ -25,20 +25,19 @@ export async function get({ params }) {
 export async function post({ request }) {
 	let con = await conFn();
 	const form = await request.formData();
-	const first_name = form.get('first_name');
-	const last_name = form.get('last_name');
-	const email = form.get('email');
-	const password = form.get('password');
+	const athlete_id = form.get('athlete_id');
+	const interaction_date = form.get('date');
+	const notes = form.get('note');
 	con.query(
-		'INSERT INTO website_user (first_name, last_name, email, password) VALUES (?, ?, ?, ?)',
-		[first_name, last_name, email, password]
+		'INSERT INTO interations (athlete_id, user_id, interation_date, notes) VALUES (?, ?, ?, ?)',
+		[athlete_id, '111111', interaction_date, notes]
 	);
 	return {
 		body: {
-			first_name: form.get('first_name'),
-			last_name: form.get('last_name'),
-			email: form.get('email'),
-			password: form.get('password')
+			athlete_id: form.get('athlete_id'),
+			user_id: '111111',
+			interaction_date: form.get('date'),
+			notes: form.get('note')
 		}
 	};
 }
@@ -47,22 +46,19 @@ export async function put({ request }) {
 	console.log('put');
 	let con = await conFn();
 	const form = await request.formData();
-	const first_name = form.get('first_name');
-	const last_name = form.get('last_name');
-	const email = form.get('email');
-	const password = form.get('password');
-	const user_id = form.get('user_id');
-	con.query(
-		'UPDATE website_user SET first_name = ?,  last_name = ?, email = ?, password = ? WHERE user_id = ?',
-		[first_name, last_name, email, password, user_id]
-	);
+	const interaction_date = form.get('date');
+	const notes = form.get('note');
+	const interactions_id = form.get('interaction_id');
+	con.query('UPDATE interactions SET interaction_date = ?, notes = ? WHERE interactions_id = ?', [
+		interaction_date,
+		notes,
+		interactions_id
+	]);
 	return {
 		body: {
-			first_name: form.get('first_name'),
-			last_name: form.get('last_name'),
-			email: form.get('email'),
-			password: form.get('password'),
-			user_id: form.get('user_id')
+			interaction_date: form.get('date'),
+			notes: form.get('note'),
+			interactions_id: form.get('interaction_id')
 		}
 	};
 }
@@ -72,15 +68,11 @@ export async function del({ request }) {
 	let con = await conFn();
 	const form = await request.formData();
 
-	const user_id = form.get('user_id');
-	con.query('DELETE FROM website_user WHERE user_id = ?', [user_id]);
+	const interactions_id = form.get('interaction_id');
+	con.query('DELETE FROM interactions WHERE interactions_id = ?', [interactions_id]);
 	return {
 		body: {
-			first_name: form.get('first_name'),
-			last_name: form.get('last_name'),
-			email: form.get('email'),
-			password: form.get('password'),
-			user_id: form.get('user_id')
+			interactions_id: form.get('interaction_id')
 		}
 	};
 }

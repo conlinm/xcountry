@@ -4,6 +4,10 @@ top_schools = top_schools[0];
 </script>
 
 <div class="topschools">
+  <h3>Count of Top Female Athletes by School</h3>
+  <p>
+    This page implements our advanced query that determines the number of female athletes with a time less that 22 mins, in the 11th grade, by school. This query utilizes a subquery, two joins, and a group by function. 
+  </p>
     <div class="table">
       <table>
         <thead>
@@ -59,6 +63,10 @@ top_schools = top_schools[0];
           padding: 5px;
           /* text-align: left; */
           width: 200px;
+        }
+
+        p {
+          padding: 2rem 6rem;
         }
 </style>
 

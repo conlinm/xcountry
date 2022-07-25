@@ -30,7 +30,7 @@
       <table>
           <thead>
             <tr>
-              <th>Last Name</th>
+              <th>Name</th>
               <th>Grade</th>
               <th>Event</th>
             </tr>
@@ -39,7 +39,7 @@
           <tbody>
             {#each athletes as athlete}
             <tr>
-              <td>{athlete.last_name}</td>
+              <td>{athlete.first_name} {athlete.last_name}</td>
               <td>{athlete.grade_level}</td>
               <td>{athlete.event_name}</td>
             </tr>

@@ -25,9 +25,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin:6rem;
-      width: auto;
+      align-content: top;
+      height: auto;
+      margin :6rem;
+      width: 800px;
 
     }
     .button-primary {
