@@ -55,7 +55,7 @@
         <div class="intro">
          <h3 class="center">Interactions</h3>
          <p>
-            This page displays the interactions a user has with the athletes they are following. Interactions can be created, edited, or deleted.
+            Here you can view all of the interactions that have been recorded for your athletes.
          </p>
         </div>
         <!-- <div class="right">
@@ -67,19 +67,28 @@
     </div>  
       <div class="table">
       <table>
+        <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+        </colgroup>
           <thead>
             <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Note</th>
+                <th scope="col" >Name</th>
+                <th scope="col" >Date</th>
+                <th scope="col" >Note</th>
+                <th scope="col" ></th>
+                <th scope="col" ></th>
             </tr>
           </thead>
          
           <tbody>
+            
             {#each interactions as interaction}
             <tr>
                 <td>{interaction.first_name} {interaction.last_name}</td>
-                <td></td>
                 <td>{interaction.interaction_date}</td>
                 <td>{interaction.notes}</td>
                 <td><button on:click={()=>openEdit(interaction)} class="button-primary-edit">Edit</button></td>
@@ -169,25 +178,30 @@
         border: 0.1rem solid #c16100;
     }
     .table {
-        width: 700px;
+        width: 900px;
         table-layout: auto;
         border-collapse: collapse;
     }
     .table tbody {
-        display: block;
+        /* display: block; */
         width: 100%;
         overflow: auto;
         height: 400px;
     }
-    .table thead tr {
-        display: block;
+    .table thead {
+        /* display: block; */
+        width: auto;
 
     }
-    .table th,
-    .table td {
-        padding: 5px;
+    .table th {
+        padding: 3px;
         /* text-align: left; */
-        width: 200px;
+        /* width: auto; */
+    }
+    .table td {
+        padding: 3px;
+        /* text-align: left; */
+        width: auto;
     }
     .edit {
       display: flex;

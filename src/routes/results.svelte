@@ -1,17 +1,16 @@
 
 <script >
 
-    export let prs;
-    prs = prs[0];
+    export let results;
   
   </script>
   
 
   
-  <div class="records">
-    <h3>Record Times</h3>
+  <div class="results">
+    <h3>Meet Results</h3>
     <p>
-      These are the personal records for each athlete.
+      These are the meet results ordered by athlete.
     </p>
       <div class="table">
       <table>
@@ -26,13 +25,13 @@
           </thead>
          
           <tbody>
-            {#each prs as pr}
+            {#each results as result}
             <tr>
-              <td>{pr.last_name}</td>
-              <td>{pr.school_name}</td>
-              <td>{pr.distance}</td>
-              <td>{pr.pr_time}</td>
-              <td>{pr.meet_date}</td>
+                <td>{result.first_name} {result.last_name}</td>
+                <td>{result.school_name}</td>
+                <td>{result.distance}</td>
+                <td>{result.result_time}</td>
+                <td>{result.meet_date}</td>
             </tr>
             {/each}
   
@@ -43,7 +42,7 @@
   </div>
 
   <style>
-    .records {
+    .results {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -52,7 +51,7 @@
         height: 100vh;
     }  
         .table {
-          width: 700px;
+          width: 800px;
           table-layout: auto;
           border-collapse: collapse;
         }

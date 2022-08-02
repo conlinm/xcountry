@@ -1,12 +1,12 @@
-//import adapter from '@sveltejs/adapter-auto';
-import appengine from "svelte-adapter-appengine";
+import adapter from '@sveltejs/adapter-auto';
+//import appengine from "svelte-adapter-appengine";
 
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-	//	adapter: adapter(),
-		adapter: appengine(),
+		adapter: adapter(),
+		//adapter: appengine(),
 		//target: "#svelte",
 		methodOverride: {
 			allowed: ['PUT', 'DELETE']

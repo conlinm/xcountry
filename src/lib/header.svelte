@@ -1,24 +1,31 @@
+<script>
+  export let  myCheckbox;
 
+  function handleClick() {
+    myCheckbox.checked = false;
+  }
+
+</script>
 <header id='header'>
     <img src="/xcLogo.png" class="img-responsive" alt="logo">
 	 <span class ='nav-heading nav-brand' >Cross Country Recruit Manager</span>
-	 <input type ='checkbox' class = 'menu-toggle' id ='menu-toggle'>
+	 <input type ='checkbox' class = 'menu-toggle' id ='menu-toggle' bind:this={myCheckbox}>
 	<nav class= 'header'>
 		<ul>
-            <li><a href='/athletes'>Athletes</a></li>
-            <li><a href='/topathletes'>Top Athletes</a></li>
-            <li><a href='/create'>Users</a></li>
-            <li><a href='/pr'>PR Times</a></li>
-            <li><a href='/myathletes'>My Athletes</a></li>
-            <li><a href='/interactions'>Interactions</a></li>
-            <li><a href='/meets'>Meets</a></li>
-			<li><a href = '/schools'>Schools</a></li>
-      <li><a href = '/topschools'>School Top Athlete Count</a></li>
-			<li><a href='/home'>Home </a></li>
-        </ul>
+            <li on:click={handleClick}><a href='/athletes'>Athletes</a></li>
+            <li on:click={handleClick}><a href='/topathletes'>Top Athletes</a></li>
+            <li on:click={handleClick}><a href='/create'>Users</a></li>
+            <li on:click={handleClick}><a href='/pr'>PR Times</a></li>
+            <li on:click={handleClick}><a href='/myathletes'>My Athletes</a></li>
+            <li on:click={handleClick}><a href='/interactions'>Interactions</a></li>
+            <li on:click={handleClick}><a href='/meets'>Meets</a></li>
+            <li on:click={handleClick}><a href = '/schools'>Schools</a></li>
+            <li on:click={handleClick}><a href = '/topschools'>School Top Athlete Count</a></li>
+            <li on:click={handleClick}><a href='/home'>Home </a></li>
+    </ul>
 	</nav>
 	<label for='menu-toggle' class='menu-nav-toggle'>
-		<span>  </span>
+		<span></span>
 	</label>
 </header>
 
