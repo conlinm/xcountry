@@ -5,8 +5,8 @@
     
     <div class="topathletes">
         <div class="table">
-            <h3>Top Athletes By Time</h3>
-            <p>This is a page that runs our advanced query that selects the athletes with a time in the 5000 m of less than 19 min for boys, and less than 20 min for girls. This is implemented in a stored procedure.</p>
+            <h3>Top Athletes</h3>
+            <p>Athletes with a time in the 5000 m of less than 19 min for boys, and less than 20 min for girls.</p>
           <table>
             <thead>
               <tr>
