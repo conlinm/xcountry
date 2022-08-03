@@ -3,8 +3,17 @@
 // import { searchEvent } from "./athletes";
 
     export let athletes;
-  
 
+    export let firstNameField;
+    export let lastNameField;
+    export let athleteIDField;
+  
+    function createNew(athlete){
+        firstNameField = athlete.first_name;
+        lastNameField = athlete.last_name;
+        athleteIDField = athlete.athlete_id;
+        window.location.replace('./create_meet_result?athlete_id=' + athlete.athlete_id + '&first_name=' + athlete.first_name + '&last_name=' + athlete.last_name);
+    }
   </script>
   
 
@@ -33,6 +42,8 @@
               <th>Name</th>
               <th>Grade</th>
               <th>Event</th>
+              <th>
+              </th>
             </tr>
           </thead>
          
@@ -42,6 +53,7 @@
               <td>{athlete.first_name} {athlete.last_name}</td>
               <td>{athlete.grade_level}</td>
               <td>{athlete.event_name}</td>
+              <td><button on:click={()=>createNew(athlete)} class="button-result">Add Result</button></td>
             </tr>
             {/each}
   
@@ -98,6 +110,16 @@
     }
     .button-primary-edit {
         width: 60px;
+        height:30px;
+        background-color: #FF7F00;
+        border: 0.1rem solid #FF7F00;
+        padding: 0;
+        line-height: 20px;
+        
+
+    }
+    .button-result {
+        width: 80px;
         height:30px;
         background-color: #FF7F00;
         border: 0.1rem solid #FF7F00;

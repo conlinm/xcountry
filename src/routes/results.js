@@ -13,7 +13,7 @@ export async function get({ params }) {
             JOIN meet as meet
                 ON mr.athlete_id = a.athlete_id and mr.meet_id = meet.meet_id
         WHERE mr.result_time < '01:00:00'
-        ORDER BY a.athlete_id;`)
+        ORDER BY meet_date, a.athlete_id;`)
 		.then(function ([rows, fields]) {
 			return rows;
 		});
