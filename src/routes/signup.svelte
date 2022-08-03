@@ -2,9 +2,7 @@
 <div class='create'>
     <h2>New Account</h2>
       <div>
-        <p>
-          This is the form for a new user creation. Entry of data in the form and clicking of the create account button will send the information to a post request, which generats the SQL statement to add the new user to the database. This is followed by a redirect to the users page.
-        </p>
+
       </div>
       <form action="/create" method="post">
           <fieldset>

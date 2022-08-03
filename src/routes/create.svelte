@@ -32,8 +32,7 @@
         <div class="intro">
          <h3 class="center">Users</h3>
          <p>
-            This page functions as an admin page for the modification and deletion of users.
-            Post, put, and delete functions are provided which send the queries to our backend database on GCP.
+            Admin page to manage Cross Country Reference Manager Users.
          </p>
         </div>
         <div class="right">

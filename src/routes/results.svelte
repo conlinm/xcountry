@@ -1,7 +1,24 @@
 
 <script >
+    // import * as d3 from "d3";
 
     export let results;
+    
+
+    // const width = 800;
+    // const height = 600;
+
+    // const margin = { top: 20, right: 20, bottom: 20, left: 180 };
+    // const innerHeight = height - margin.top - margin.bottom;
+    // const innerWidth = width - margin.left - margin.right;
+
+    // $: xDomain = results.map((d) => d.country);
+    // $: yDomain = results.map((d) => +d.population);
+
+    // $: yScale = d3.scaleBand().domain(xDomain).range([0, innerHeight]).padding(0.1);
+    // $: xScale = d3.scaleLinear()
+    // .domain([0, Math.max.apply(null, yDomain)])
+    // .range([0, innerWidth]);
   
   </script>
   
@@ -12,6 +29,8 @@
     <p>
       These are the meet results ordered by athlete.
     </p>
+    
+    
       <div class="table">
       <table>
           <thead>
@@ -42,6 +61,7 @@
   </div>
 
   <style>
+    
     .results {
         display: flex;
         flex-direction: column;

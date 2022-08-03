@@ -21,7 +21,7 @@
             <li on:click={handleClick}><a href='/meets'>Meets</a></li>
             <li on:click={handleClick}><a href = '/schools'>Schools</a></li>
             <li on:click={handleClick}><a href = '/topschools'>School Top Athlete Count</a></li>
-            <li on:click={handleClick}><a href='/home'>Home </a></li>
+            <li on:click={handleClick}><a href='/results'>Meet Results </a></li>
     </ul>
 	</nav>
 	<label for='menu-toggle' class='menu-nav-toggle'>

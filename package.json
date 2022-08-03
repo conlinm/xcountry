@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"d3": "^7.6.1",
 		"milligram": "^1.4.1",
 		"mysql": "^2.18.1",
 		"mysql2": "^2.3.3"
