@@ -22,6 +22,7 @@
             <li on:click={handleClick}><a href = '/schools'>Schools</a></li>
             <li on:click={handleClick}><a href = '/topschools'>School Top Athlete Count</a></li>
             <li on:click={handleClick}><a href='/results'>Meet Results </a></li>
+            <li on:click={handleClick}><a href='/coaches'>Coaches</a></li>
     </ul>
 	</nav>
 	<label for='menu-toggle' class='menu-nav-toggle'>
@@ -79,7 +80,7 @@ nav ul {
 
 nav li {
   margin-left: 1rem;
-  height: 10%;
+  height: 7%;
   list-style: none;
 }
 
